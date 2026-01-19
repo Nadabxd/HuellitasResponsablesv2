@@ -47,28 +47,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $accion === 'crear') {
         $allowed = ['jpg', 'jpeg', 'png', 'gif'];
         $filename = $_FILES['foto']['name'];
         $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+        $max_size = 5 * 1024 * 1024; // 5MB
         
+        // Validate extension
         if (in_array($ext, $allowed)) {
-            $new_filename = uniqid() . '.' . $ext;
-            $upload_path = '../../assets/img/uploads/' . $new_filename;
-            
-            if (move_uploaded_file($_FILES['foto']['tmp_name'], $upload_path)) {
-                $foto = $new_filename;
+            // Validate file size
+            if ($_FILES['foto']['size'] <= $max_size) {
+                // Validate it's actually an image
+                $image_info = getimagesize($_FILES['foto']['tmp_name']);
+                if ($image_info !== false) {
+                    $new_filename = uniqid() . '.' . $ext;
+                    $upload_path = '../../assets/img/uploads/' . $new_filename;
+                    
+                    if (move_uploaded_file($_FILES['foto']['tmp_name'], $upload_path)) {
+                        $foto = $new_filename;
+                    }
+                } else {
+                    $mensaje = "El archivo no es una imagen válida";
+                    $tipo_mensaje = "danger";
+                }
+            } else {
+                $mensaje = "El archivo es demasiado grande. Máximo 5MB";
+                $tipo_mensaje = "danger";
             }
         }
     }
     
-    try {
-        $stmt = $conn->prepare("
-            INSERT INTO mascotas (nombre, especie, raza, edad, sexo, tamanio, color, estado, descripcion, foto, vacunado, esterilizado, id_refugio, fecha_ingreso)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-        ");
-        $stmt->execute([$nombre, $especie, $raza, $edad, $sexo, $tamanio, $color, $estado, $descripcion, $foto, $vacunado, $esterilizado, $id_refugio, $fecha_ingreso]);
-        $mensaje = "Mascota registrada exitosamente";
-        $tipo_mensaje = "success";
-    } catch (PDOException $e) {
-        $mensaje = "Error: " . $e->getMessage();
-        $tipo_mensaje = "danger";
+    if (!isset($mensaje)) {
+        try {
+            $stmt = $conn->prepare("
+                INSERT INTO mascotas (nombre, especie, raza, edad, sexo, tamanio, color, estado, descripcion, foto, vacunado, esterilizado, id_refugio, fecha_ingreso)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ");
+            $stmt->execute([$nombre, $especie, $raza, $edad, $sexo, $tamanio, $color, $estado, $descripcion, $foto, $vacunado, $esterilizado, $id_refugio, $fecha_ingreso]);
+            $mensaje = "Mascota registrada exitosamente";
+            $tipo_mensaje = "success";
+        } catch (PDOException $e) {
+            $mensaje = "Error: " . $e->getMessage();
+            $tipo_mensaje = "danger";
+        }
     }
 }
 

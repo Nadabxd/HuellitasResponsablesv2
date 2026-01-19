@@ -85,7 +85,8 @@ $stmt = $conn->query("
     FROM seguimientos
     WHERE estado_validacion = 'aprobado'
 ");
-$promedio_bienestar = round($stmt->fetch()['promedio'] ?? 0, 2);
+$result_bienestar = $stmt->fetch();
+$promedio_bienestar = $result_bienestar ? round($result_bienestar['promedio'] ?? 0, 2) : 0;
 
 include '../../includes/header.php';
 ?>

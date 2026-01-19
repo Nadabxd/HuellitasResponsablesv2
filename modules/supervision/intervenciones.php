@@ -301,7 +301,7 @@ include '../../includes/header.php';
 
 <script>
 function setAdoptante(select) {
-    if (select.selectedIndex >= 0) {
+    if (select.selectedIndex > 0) {
         const selectedOption = select.options[select.selectedIndex];
         const adoptanteId = selectedOption.getAttribute('data-adoptante');
         if (adoptanteId) {
