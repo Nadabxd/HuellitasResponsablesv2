@@ -1,0 +1,492 @@
+/**
+ * Estilos Personalizados - HuellasResponsables
+ * Sistema de Gestión de Adopciones Responsables
+ */
+
+/* ============================================
+   Variables de Colores
+   ============================================ */
+:root {
+    --primary-color: #2C3E50;
+    --secondary-color: #27AE60;
+    --background-light: #F8F9FA;
+    --text-dark: #2C3E50;
+    --success-color: #27AE60;
+    --warning-color: #F39C12;
+    --danger-color: #E74C3C;
+    --sidebar-width: 260px;
+}
+
+/* ============================================
+   Estilos Generales
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.bg-primary-custom {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%) !important;
+}
+
+/* ============================================
+   Navbar Superior
+   ============================================ */
+.navbar {
+    height: 60px;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand {
+    font-weight: 600;
+    font-size: 1.3rem;
+}
+
+.navbar-brand .material-icons {
+    vertical-align: middle;
+    margin-right: 5px;
+    font-size: 1.8rem;
+}
+
+.nav-link .material-icons {
+    vertical-align: middle;
+    font-size: 1.2rem;
+}
+
+/* ============================================
+   Sidebar Lateral
+   ============================================ */
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: var(--sidebar-width);
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    z-index: 999;
+    border-right: 1px solid #dee2e6;
+    transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-menu li {
+    margin: 0;
+}
+
+.sidebar-menu a {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: all 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-menu a:hover {
+    background-color: var(--background-light);
+    border-left-color: var(--secondary-color);
+}
+
+.sidebar-menu a.active {
+    background-color: rgba(39, 174, 96, 0.1);
+    border-left-color: var(--secondary-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.sidebar-menu a .material-icons {
+    margin-right: 15px;
+    font-size: 1.5rem;
+}
+
+/* ============================================
+   Main Content Area
+   ============================================ */
+.main-content {
+    margin-left: var(--sidebar-width);
+    margin-top: 60px;
+    padding: 30px;
+    min-height: calc(100vh - 60px);
+}
+
+/* ============================================
+   Cards y Componentes
+   ============================================ */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+.card-header {
+    background-color: white;
+    border-bottom: 2px solid var(--background-light);
+    padding: 15px 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.card-header .material-icons {
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+/* ============================================
+   Stat Cards (Tarjetas de Estadísticas)
+   ============================================ */
+.stat-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--secondary-color);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.stat-card .stat-icon {
+    font-size: 3rem;
+    opacity: 0.2;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.stat-card .stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.stat-card .stat-label {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-card.success::before {
+    background: var(--success-color);
+}
+
+.stat-card.warning::before {
+    background: var(--warning-color);
+}
+
+.stat-card.danger::before {
+    background: var(--danger-color);
+}
+
+.stat-card.info::before {
+    background: #3498db;
+}
+
+/* ============================================
+   Tablas
+   ============================================ */
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+    color: white;
+}
+
+.table thead th {
+    border: none;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.table tbody tr {
+    transition: background-color 0.2s;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(39, 174, 96, 0.05);
+}
+
+.table td {
+    vertical-align: middle;
+    padding: 15px;
+}
+
+/* ============================================
+   Badges (Etiquetas)
+   ============================================ */
+.badge {
+    padding: 5px 12px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.badge-disponible {
+    background-color: var(--success-color);
+}
+
+.badge-adoptado {
+    background-color: #3498db;
+}
+
+.badge-en-riesgo {
+    background-color: var(--danger-color);
+}
+
+.badge-pendiente {
+    background-color: var(--warning-color);
+}
+
+.badge-aprobado {
+    background-color: var(--success-color);
+}
+
+.badge-rechazado {
+    background-color: var(--danger-color);
+}
+
+/* ============================================
+   Botones
+   ============================================ */
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+}
+
+.btn .material-icons {
+    vertical-align: middle;
+    font-size: 1.2rem;
+    margin-right: 5px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(44, 62, 80, 0.3);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--success-color) 0%, #229954 100%);
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+}
+
+.btn-sm {
+    padding: 5px 12px;
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   Formularios
+   ============================================ */
+.form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    padding: 10px 15px;
+    transition: all 0.3s;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.2rem rgba(39, 174, 96, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.form-label .material-icons {
+    vertical-align: middle;
+    font-size: 1.1rem;
+    margin-right: 5px;
+}
+
+/* ============================================
+   Imágenes de Mascotas
+   ============================================ */
+.pet-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.pet-image-thumbnail {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* ============================================
+   Footer
+   ============================================ */
+.footer {
+    margin-left: var(--sidebar-width);
+    margin-top: auto;
+    border-top: 1px solid #dee2e6;
+}
+
+/* ============================================
+   Responsive Design
+   ============================================ */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 60px);
+        background: rgba(0,0,0,0.5);
+        z-index: 998;
+    }
+    
+    .sidebar-overlay.show {
+        display: block;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .footer {
+        margin-left: 0;
+    }
+}
+
+/* ============================================
+   Utilidades
+   ============================================ */
+.text-primary-custom {
+    color: var(--primary-color) !important;
+}
+
+.text-secondary-custom {
+    color: var(--secondary-color) !important;
+}
+
+.bg-success-light {
+    background-color: rgba(39, 174, 96, 0.1) !important;
+}
+
+.bg-warning-light {
+    background-color: rgba(243, 156, 18, 0.1) !important;
+}
+
+.bg-danger-light {
+    background-color: rgba(231, 76, 60, 0.1) !important;
+}
+
+.material-icons {
+    vertical-align: middle;
+}
+
+/* ============================================
+   Animaciones
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+/* ============================================
+   Scrollbar personalizada
+   ============================================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

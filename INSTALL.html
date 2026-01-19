@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalación - HuellasResponsables</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2C3E50 0%, #27AE60 100%);
+            min-height: 100vh;
+            padding: 30px 0;
+        }
+        .install-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .install-header {
+            background: linear-gradient(135deg, #2C3E50 0%, #34495e 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px 15px 0 0;
+            text-align: center;
+        }
+        .step {
+            padding: 20px;
+            border-left: 4px solid #27AE60;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #27AE60;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .code-block {
+            background: #2C3E50;
+            color: #27AE60;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        .check-item {
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+            border-left: 3px solid #27AE60;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="install-card">
+            <div class="install-header">
+                <h1><span class="material-icons" style="font-size: 3rem;">pets</span></h1>
+                <h2>HuellasResponsables</h2>
+                <p>Guía de Instalación</p>
+            </div>
+            
+            <div class="p-4">
+                <div class="alert alert-info">
+                    <span class="material-icons">info</span>
+                    <strong>Antes de comenzar:</strong> Asegúrate de tener XAMPP instalado y funcionando.
+                </div>
+                
+                <!-- Paso 1 -->
+                <div class="step">
+                    <h4><span class="step-number">1</span> Verificar XAMPP</h4>
+                    <p>Inicia Apache y MySQL desde el Panel de Control de XAMPP.</p>
+                    <div class="check-item">
+                        ✓ Apache debe estar en estado "Running"
+                    </div>
+                    <div class="check-item">
+                        ✓ MySQL debe estar en estado "Running"
+                    </div>
+                </div>
+                
+                <!-- Paso 2 -->
+                <div class="step">
+                    <h4><span class="step-number">2</span> Ubicar el Proyecto</h4>
+                    <p>Este proyecto debe estar en la carpeta htdocs de XAMPP:</p>
+                    <div class="code-block">
+                        C:\xampp\htdocs\HuellasResponsables\
+                    </div>
+                </div>
+                
+                <!-- Paso 3 -->
+                <div class="step">
+                    <h4><span class="step-number">3</span> Crear la Base de Datos</h4>
+                    <ol>
+                        <li>Abre phpMyAdmin: <a href="http://localhost/phpmyadmin" target="_blank">http://localhost/phpmyadmin</a></li>
+                        <li>Haz clic en "Nueva" en el menú izquierdo</li>
+                        <li>Importa el archivo <code>database.sql</code> ubicado en la raíz del proyecto</li>
+                        <li>Alternativamente, copia y pega el contenido de <code>database.sql</code> en la pestaña SQL</li>
+                    </ol>
+                </div>
+                
+                <!-- Paso 4 -->
+                <div class="step">
+                    <h4><span class="step-number">4</span> Configurar la Conexión</h4>
+                    <p>El archivo <code>config/conexion.php</code> ya tiene la configuración por defecto de XAMPP:</p>
+                    <div class="code-block">
+                        Host: localhost<br>
+                        Usuario: root<br>
+                        Contraseña: (vacío)<br>
+                        Base de datos: huellas_responsables
+                    </div>
+                    <p class="mb-0"><small>Si tu configuración es diferente, edita este archivo.</small></p>
+                </div>
+                
+                <!-- Paso 5 -->
+                <div class="step">
+                    <h4><span class="step-number">5</span> Permisos de Carpetas</h4>
+                    <p>Asegúrate de que la carpeta de uploads tenga permisos de escritura:</p>
+                    <div class="code-block">
+                        assets/img/uploads/
+                    </div>
+                </div>
+                
+                <!-- Paso 6 -->
+                <div class="step">
+                    <h4><span class="step-number">6</span> Acceder al Sistema</h4>
+                    <p>Una vez completados los pasos anteriores, accede a:</p>
+                    <div class="text-center my-3">
+                        <a href="auth/login.php" class="btn btn-success btn-lg">
+                            <span class="material-icons">login</span> Ir al Login
+                        </a>
+                    </div>
+                    <p class="text-center">O visita: <code>http://localhost/HuellasResponsables/auth/login.php</code></p>
+                </div>
+                
+                <!-- Credenciales -->
+                <div class="alert alert-success">
+                    <h5><span class="material-icons">vpn_key</span> Credenciales de Prueba</h5>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <strong>Administrador:</strong><br>
+                            Email: admin@huellas.com<br>
+                            Pass: admin123
+                        </div>
+                        <div class="col-md-4">
+                            <strong>Refugio:</strong><br>
+                            Email: refugio@huellas.com<br>
+                            Pass: admin123
+                        </div>
+                        <div class="col-md-4">
+                            <strong>Cliente:</strong><br>
+                            Email: juan@example.com<br>
+                            Pass: admin123
+                        </div>
+                    </div>
+                    <div class="text-center mt-3">
+                        <p class="text-muted small">O puedes <a href="auth/register.php">crear una nueva cuenta</a> desde la página de registro.</p>
+                    </div>
+                </div>
+                
+                <!-- Solución de problemas -->
+                <div class="step">
+                    <h4><span class="material-icons">help</span> Solución de Problemas</h4>
+                    <ul>
+                        <li><strong>Error de conexión a BD:</strong> Verifica que MySQL esté corriendo y las credenciales en <code>config/conexion.php</code></li>
+                        <li><strong>Página en blanco:</strong> Activa la visualización de errores de PHP en <code>php.ini</code></li>
+                        <li><strong>No carga imágenes:</strong> Verifica permisos de la carpeta <code>assets/img/uploads/</code></li>
+                        <li><strong>Error 404:</strong> Verifica que el proyecto esté en <code>htdocs</code> y la URL sea correcta</li>
+                    </ul>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <p class="text-muted">
+                        <span class="material-icons">favorite</span>
+                        Desarrollado para el bienestar animal
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
