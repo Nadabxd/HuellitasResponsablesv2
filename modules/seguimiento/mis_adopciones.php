@@ -72,7 +72,7 @@ include '../../includes/header.php';
                                             <?php endif; ?>
                                             
                                             <div class="mt-3">
-                                                <span class="badge badge-<?php echo $mascota['estado']; ?> w-100">
+                                                <span class="badge badge-<?php echo str_replace(' ', '-', $mascota['estado']); ?> w-100">
                                                     <?php echo ucfirst(str_replace('_', ' ', $mascota['estado'])); ?>
                                                 </span>
                                             </div>

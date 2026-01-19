@@ -185,7 +185,7 @@ include '../../includes/header.php';
                                                                                 <strong><?php echo htmlspecialchars($m['nombre']); ?></strong> 
                                                                                 - <?php echo htmlspecialchars($m['especie']); ?>
                                                                                 (<?php echo htmlspecialchars($m['raza'] ?? 'N/A'); ?>)
-                                                                                <span class="badge badge-<?php echo $m['estado']; ?> float-end">
+                                                                                <span class="badge badge-<?php echo str_replace(' ', '-', $m['estado']); ?> float-end">
                                                                                     <?php echo ucfirst($m['estado']); ?>
                                                                                 </span>
                                                                             </li>
