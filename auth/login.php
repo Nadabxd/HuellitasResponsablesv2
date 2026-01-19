@@ -148,6 +148,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </button>
             </form>
             
+            <div class="text-center mt-3">
+                <p class="text-muted mb-1">¿No tienes una cuenta?</p>
+                <a href="register.php" style="color: #27AE60; text-decoration: none; font-weight: 600;">
+                    <span class="material-icons" style="font-size: 1rem;">person_add</span> Registrarse
+                </a>
+            </div>
+            
             <div class="mt-4 text-center text-muted small">
                 <p>Credenciales de prueba:</p>
                 <p class="mb-1"><strong>Admin:</strong> admin@huellas.com / admin123</p>

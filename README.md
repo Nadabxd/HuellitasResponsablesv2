@@ -72,6 +72,8 @@ http://localhost/HuellasResponsables/auth/login.php
 - Email: `juan@example.com`
 - Contraseña: `admin123`
 
+**Nota:** También puedes crear una nueva cuenta de cliente desde la página de registro: `http://localhost/HuellasResponsables/auth/register.php`
+
 ## 📁 Estructura del Proyecto
 ```
 HuellasResponsables/
@@ -81,6 +83,9 @@ HuellasResponsables/
 │   ├── js/                # JavaScript
 │   └── img/uploads/       # Imágenes subidas
 ├── auth/                  # Sistema de autenticación
+│   ├── login.php         # Inicio de sesión
+│   ├── register.php      # Registro de nuevos usuarios
+│   └── logout.php        # Cerrar sesión
 ├── includes/              # Componentes reutilizables
 ├── modules/               # Módulos del sistema
 │   ├── usuarios/         # Gestión de usuarios
