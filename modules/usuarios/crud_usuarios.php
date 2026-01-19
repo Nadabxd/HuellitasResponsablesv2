@@ -85,13 +85,13 @@ if ($accion === 'eliminar' && $id_usuario) {
 // Obtener usuario para editar
 $usuario_editar = null;
 if ($accion === 'editar' && $id_usuario) {
-    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE id_usuario = ?");
+    $stmt = $conn->prepare("SELECT id_usuario, nombre, correo, rol, telefono, direccion, estado FROM usuarios WHERE id_usuario = ?");
     $stmt->execute([$id_usuario]);
     $usuario_editar = $stmt->fetch();
 }
 
-// Obtener todos los usuarios
-$stmt = $conn->query("SELECT * FROM usuarios ORDER BY fecha_registro DESC");
+// Obtener todos los usuarios (sin password)
+$stmt = $conn->query("SELECT id_usuario, nombre, correo, rol, telefono, estado, fecha_registro FROM usuarios ORDER BY fecha_registro DESC");
 $usuarios = $stmt->fetchAll();
 
 include '../../includes/header.php';

@@ -43,13 +43,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $allowed = ['jpg', 'jpeg', 'png'];
             $filename = $_FILES['foto_evidencia']['name'];
             $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+            $max_size = 5 * 1024 * 1024; // 5MB
             
-            if (in_array($ext, $allowed)) {
-                $new_filename = 'seguimiento_' . uniqid() . '.' . $ext;
-                $upload_path = '../../assets/img/uploads/' . $new_filename;
+            if (in_array($ext, $allowed) && $_FILES['foto_evidencia']['size'] <= $max_size) {
+                // Validate MIME type
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $mime = finfo_file($finfo, $_FILES['foto_evidencia']['tmp_name']);
+                finfo_close($finfo);
                 
-                if (move_uploaded_file($_FILES['foto_evidencia']['tmp_name'], $upload_path)) {
-                    $foto_evidencia = $new_filename;
+                $allowed_mimes = ['image/jpeg', 'image/jpg', 'image/png'];
+                
+                if (in_array($mime, $allowed_mimes)) {
+                    // Verify it's actually an image
+                    if (getimagesize($_FILES['foto_evidencia']['tmp_name']) !== false) {
+                        $new_filename = 'seguimiento_' . uniqid() . '.' . $ext;
+                        $upload_path = '../../assets/img/uploads/' . $new_filename;
+                        
+                        if (move_uploaded_file($_FILES['foto_evidencia']['tmp_name'], $upload_path)) {
+                            $foto_evidencia = $new_filename;
+                        }
+                    }
                 }
             }
         }

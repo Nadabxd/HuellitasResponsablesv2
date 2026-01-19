@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $accion === 'crear') {
     // Procesar imagen
     $foto = null;
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
-        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+        $allowed = ['jpg', 'jpeg', 'png']; // Removed GIF for security
         $filename = $_FILES['foto']['name'];
         $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
         $max_size = 5 * 1024 * 1024; // 5MB

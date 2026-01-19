@@ -2,9 +2,13 @@
 /**
  * Configuración de Conexión a Base de Datos
  * HuellasResponsables - Sistema de Gestión de Adopciones
+ * 
+ * NOTA DE SEGURIDAD: En producción, usar variables de entorno
+ * o un archivo de configuración fuera del directorio web
  */
 
 // Configuración de la base de datos
+// TODO: Mover a variables de entorno en producción
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASS', '');

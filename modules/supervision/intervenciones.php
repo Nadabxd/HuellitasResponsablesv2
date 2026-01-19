@@ -167,7 +167,7 @@ include '../../includes/header.php';
                                             <span class="material-icons">person</span> Responsable
                                         </label>
                                         <input type="text" class="form-control" id="responsable" name="responsable" 
-                                               value="<?php echo htmlspecialchars($_SESSION['usuario_nombre']); ?>" required>
+                                               value="<?php echo htmlspecialchars($_SESSION['usuario_nombre'] ?? ''); ?>" required>
                                     </div>
                                 </div>
                                 
